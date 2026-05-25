@@ -3,6 +3,13 @@
 @section('title', 'Shop')
 @section('content')
 
+<style>
+    h4 {
+        font-size: 1.2em;
+        margin-top: 1em;
+        color: #ff0d0d;
+    }
+</style>
 <!-- start page content -->
 <div class="container">
         <div class="row">
@@ -16,12 +23,19 @@
                         <li><a class="text-center {{ $category->name == $categoryName ? 'active-cat' : '' }}" href="{{ route('shop.index', ['category' => $category->slug]) }}">{{ $category->name }}</a></li>
                     @endforeach
                 </ul>
-                <h4 class="filter-header">
+                <h4 class="filter-header"> 
                     By Tag
                 </h4>
                 <ul class="filter-ul">
                     @foreach ($tags as $tag)
-                        <li><a class="text-center {{ $tag->name == $tagName ? 'active-cat' : '' }}" href="{{ route('shop.index', ['tag' => $tag->slug]) }}">{{ $tag->name }}</a></li>
+                        <li @if($loop->iteration == 4) style="background-color: #ffeaa7; border-radius: 5px;" @endif>
+                            
+                            <a class="text-center {{ $tag->name == $tagName ? 'active-cat' : '' }}" 
+                            href="{{ route('shop.index', ['tag' => $tag->slug]) }}"
+                            @if($loop->iteration == 4) style="color: #333;" @endif> {{ $tag->name }}
+                            
+                            </a>
+                        </li>
                     @endforeach
                 </ul>
             </div>

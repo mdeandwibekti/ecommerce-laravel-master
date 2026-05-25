@@ -12,7 +12,21 @@ use TCG\Voyager\Events\BreadDataAdded;
 use TCG\Voyager\Events\BreadDataUpdated;
 
 
+use App\Actions\MarkOrderShipped;
+
 class OrdersController extends VoyagerBaseController {
+    /**
+     * Override Voyager actions for Orders
+     */
+    public function getActions($dataType, $dataTypeContent)
+    {
+        $actions = parent::getActions($dataType, $dataTypeContent);
+        // Tambahkan custom action hanya untuk Orders
+        if ($dataType->slug === 'orders') {
+            $actions[] = MarkOrderShipped::class;
+        }
+        return $actions;
+    }
 
 
     

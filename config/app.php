@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         TCG\Voyager\VoyagerServiceProvider::class,
+        App\Providers\VoyagerBreadActionsServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
 
     ],
